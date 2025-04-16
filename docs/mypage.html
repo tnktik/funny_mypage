@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>マイページ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0c0c0;
+            color: #333;
+        }
+        header {
+            background-color: #f01010;
+            color: white;
+            padding: 15px 20px;
+            text-align: left;
+        }
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #ffe5e5;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .sidebar h3 {
+            margin-top: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .profile {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 id="welcome">たいちゃん電気株式会社へようこそ</h1>
+</header>
+
+<div class="container">
+    <!-- 左側の目次 -->
+    <nav class="sidebar">
+        <h3>目次</h3>
+        <ul>
+            <li><a href="#profile">メール</a></li>
+            <li><a href="#projects">プロジェクト</a></li>
+            <li><a href="#contact">選考フロー</a></li>
+        </ul>
+    </nav>
+
+    <!-- 右側の内容 -->
+    <main class="content">
+        <h3><strong><div id="user_name"></div><strong></strong></h3>
+
+        <section class="profile" id="profile">
+            <h2>メール</h2>
+            <li><a href="#" onclick="goToPage('incorrect')">選考結果について</a></li>
+        
+
+        </section>
+
+        <section id="projects" style="margin-top: 40px;">
+            <h2>プロジェクト</h2>
+            <p>地球冷暖化計画レベル８に突入しています。</p><BR>
+                セキュリティと安全面はぼろぼろです。
+        </section>
+
+        <section id="contact" style="margin-top: 40px;">
+            <h2>選考フロー</h2>
+            書類選考ー＞1次面接ー＞2次面接ー＞3次面接ー＞4次面接ー＞5次面接ー＞6次面接ー＞7次面接ー＞8次面接ー＞9次面接ー＞10次面接ー＞最終面接
+        </section>
+    </main>
+</div>
+
+<script>
+    const users = {
+        NE000000: {
+            ID : "NE000000",
+            name: "たいちゃん"
+        },
+        NE000001: {
+            ID : "NE000001",
+            name: "まえやん"
+        },
+        NE000002: {
+            ID : "NE000002",
+            name: "フフフ大魔王"
+        }
+        
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const user = params.get("user");
+
+    const userInfo = users[user];
+
+    if (userInfo) {
+        document.getElementById("user_name").textContent = userInfo.name+"さん";
+        document.getElementById("name").textContent = userInfo.name;
+
+    } else {
+        document.getElementById("welcome").textContent = "不明なユーザーです";
+        document.getElementById("name").textContent = "不明";
+    }
+    function goToPage(page) {
+        if(page=="incorrect"){
+            window.location.href = `incorrect.html?user=${encodeURIComponent(userInfo.ID)}`;
+        }
+    }
+</script>
+
+</body>
+</html>

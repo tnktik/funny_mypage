@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>マイページ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0c0c0;
+            color: #333;
+        }
+        header {
+            background-color: #f01010;
+            color: white;
+            padding: 15px 20px;
+            text-align: left;
+        }
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #ffe5e5;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .sidebar h3 {
+            margin-top: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .profile {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>たいちゃん電気株式会社へようこそ</h1>
+</header>
+
+<div class="container">
+    <!-- 左側の目次 -->
+    <nav class="sidebar">
+        <h3>目次</h3>
+        <ul>
+            <li><a href="#" onclick="goToPage('mypage')">トップ</a></li>
+        </ul>
+    </nav>
+
+    <!-- 右側の内容 -->
+    <main class="content">
+        <section class="profile" id="profile">
+            <h2>選考結果</h2>
+            <p><strong>選考結果 :</strong> 不合格</p>
+            <p>お世話になっております。株式会社たいちゃん電機の採用担当たいちゃんです。<BR>
+                この度は、弊社の求人にご応募いただき、誠にありがとうございます。<BR><BR>
+                <span class="name"></span>様の応募書類をもとに慎重に審査しました結果、<BR>
+                誠に残念ながらご希望に添えない結果となりました。<BR><BR>
+                 
+                限られた採用枠に対して多数のご応募をいただいており、<BR>
+                選考基準もかなり高いものとなった中で、慎重に選考を進め、<BR>
+                相対評価として結果を出しております。<BR><BR>
+                 
+                誠に恐縮ではございますが、何卒ご理解のほどお願い申し上げます。<BR>
+                お預かりした応募書類につきましては、弊社にて責任をもって処分いたします。<BR><BR>
+                 
+                多くの企業がある中から、弊社にご応募いただきましたことを<BR>
+                深く感謝申し上げます。<BR><BR>
+                 
+                末筆ではございますが、<span class="name"></span>様の今後ますますのご健勝、<BR>
+                ご活躍を心よりお祈り申し上げます。</p>
+
+            
+        </section>
+    </main>
+</div>
+
+</body>
+<script>
+
+const users = {
+        NE000000: {
+            ID : "NE000000",
+            name: "たいちゃん"
+        },
+        NE000001: {
+            ID : "NE000001",
+            name: "まえやん"
+        },
+        NE000002: {
+            ID : "NE000002",
+            name: "フフフ大魔王"
+        }
+        
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const user = params.get("user");
+    const userInfo = users[user];
+    const nameElements = document.querySelectorAll(".name");
+    nameElements.forEach(el => {
+    el.textContent = userInfo.name || "不明なユーザー";
+    });
+    function goToPage(page) {
+        if(page=="incorrect"){
+            window.location.href = `incorrect.html?user=${encodeURIComponent(userInfo.ID)}`;
+        }else if(page=="mypage"){
+            window.location.href = `mypage.html?user=${encodeURIComponent(userInfo.ID)}`;
+        }
+    }
+
+
+</script> 
+</html>
