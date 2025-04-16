@@ -51,7 +51,7 @@
 <body>
 
 <header>
-    <h1 id="welcome">たいちゃん電気株式会社へようこそ</h1>
+    <h1>たいちゃん電気株式会社へようこそ</h1>
 </header>
 
 <div class="container">
@@ -59,38 +59,38 @@
     <nav class="sidebar">
         <h3>目次</h3>
         <ul>
-            <li><a href="#profile">メール</a></li>
-            <li><a href="#projects">プロジェクト</a></li>
-            <li><a href="#contact">選考フロー</a></li>
+            <li><a href="#" onclick="goToPage('mypage')">トップ</a></li>
         </ul>
     </nav>
 
     <!-- 右側の内容 -->
     <main class="content">
-        <h3><strong><div id="user_name"></div><strong></strong></h3>
-
         <section class="profile" id="profile">
-            <h2>メール</h2>
-            <li><a href="#" onclick="goToPage()">選考結果について</a></li>
-        
+            <h2>選考結果</h2>
+            <p><strong>選考結果 :</strong> 合格</p>
+            <span class="name"></span> 様
+        平素よりお世話になっております。<BR>
+        たいちゃん電機株式会社 人事部のたいちゃんでございます。<BR><BR>
 
-        </section>
+        このたびは、弊社の採用選考にご参加いただき誠にありがとうございました。<BR><BR>
 
-        <section id="projects" style="margin-top: 40px;">
-            <h2>プロジェクト</h2>
-            <p>地球冷暖化計画レベル８に突入しています。</p><BR>
-                セキュリティと安全面はぼろぼろです。
-        </section>
+        慎重に選考を進めさせていただきました結果、<span class="name"></span>様を次の選考ステップ（または最終的な内定者）としてお迎えしたく、ここにご連絡申し上げます。<BR><BR>
 
-        <section id="contact" style="margin-top: 40px;">
-            <h2>選考フロー</h2>
-            書類選考ー＞1次面接ー＞2次面接ー＞3次面接ー＞4次面接ー＞5次面接ー＞6次面接ー＞7次面接ー＞8次面接ー＞9次面接ー＞10次面接ー＞最終面接
+        今後の流れにつきましては、別途ご案内させていただきますので、引き続き何卒よろしくお願い申し上げます。<BR><BR>
+
+        まずは、取り急ぎ選考結果のご報告まで申し上げます。<BR>
+
+
+
+            
         </section>
     </main>
 </div>
 
+</body>
 <script>
-    const users = {
+
+const users = {
         NE000000: {
             ID : "NE000000",
             name: "たいちゃん"
@@ -108,26 +108,19 @@
 
     const params = new URLSearchParams(window.location.search);
     const user = params.get("user");
-
     const userInfo = users[user];
-
-    if (userInfo) {
-        document.getElementById("user_name").textContent = userInfo.name+"さん";
-        document.getElementById("name").textContent = userInfo.name;
-
-    } else {
-        document.getElementById("welcome").textContent = "不明なユーザーです";
-        document.getElementById("name").textContent = "不明";
-    }
-    function goToPage() {
-        if(userInfo.ID=="NE000001"){
+    const nameElements = document.querySelectorAll(".name");
+    nameElements.forEach(el => {
+    el.textContent = userInfo.name || "不明なユーザー";
+    });
+    function goToPage(page) {
+        if(page=="incorrect"){
             window.location.href = `incorrect.html?user=${encodeURIComponent(userInfo.ID)}`;
-        }
-        if(userInfo.ID=="NE000002"){
-            window.location.href = `correct.html?user=${encodeURIComponent(userInfo.ID)}`;
+        }else if(page=="mypage"){
+            window.location.href = `mypage.html?user=${encodeURIComponent(userInfo.ID)}`;
         }
     }
-</script>
 
-</body>
+
+</script> 
 </html>
