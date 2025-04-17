@@ -41,6 +41,11 @@
             padding: 20px;
             box-sizing: border-box;
         }
+        .changepassword {
+            flex-grow: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
         .profile {
             background-color: #f9f9f9;
             padding: 20px;
@@ -71,7 +76,7 @@
 
         <section class="profile" id="profile">
             <h2>メール</h2>
-            <li><a href="#" onclick="goToPage()">選考結果について</a></li>
+            <li><a href="#" onclick="goToPage('interview')">選考結果について</a></li>
         
 
         </section>
@@ -86,25 +91,15 @@
             <h2>選考フロー</h2>
             書類選考ー＞1次面接ー＞2次面接ー＞3次面接ー＞4次面接ー＞5次面接ー＞6次面接ー＞7次面接ー＞8次面接ー＞9次面接ー＞10次面接ー＞最終面接
         </section>
+        <section id="changepassword" style="margin-top: 40px;"></section>
+        <h2>パスワードの変更</h2>
+            <li><a  onclick="goToPage('change_password')">パスワードの変更 使用不可</a></li>
+        </section>
     </main>
 </div>
-
+<script src="user_information.js"></script>
 <script>
-    const users = {
-        NE000000: {
-            ID : "NE000000",
-            name: "たいちゃん"
-        },
-        NE000001: {
-            ID : "NE000001",
-            name: "まえやん"
-        },
-        NE000002: {
-            ID : "NE000002",
-            name: "フフフ大魔王"
-        }
-        
-    };
+
 
     const params = new URLSearchParams(window.location.search);
     const user = params.get("user");
@@ -119,12 +114,17 @@
         document.getElementById("welcome").textContent = "不明なユーザーです";
         document.getElementById("name").textContent = "不明";
     }
-    function goToPage() {
-        if(userInfo.ID=="NE000001"){
-            window.location.href = `incorrect.html?user=${encodeURIComponent(userInfo.ID)}`;
+    function goToPage(page) {
+        if(page=="interview"){
+            if(userInfo.one_interview==0){
+                window.location.href = `incorrect.html?user=${encodeURIComponent(userInfo.ID)}`;
+            }
+            if(userInfo.one_interview==1){
+                window.location.href = `correct.html?user=${encodeURIComponent(userInfo.ID)}`;
+            }
         }
-        if(userInfo.ID=="NE000002"){
-            window.location.href = `correct.html?user=${encodeURIComponent(userInfo.ID)}`;
+        else if(page=="change_password"){
+            window.location.href = `change_password.html?user=${encodeURIComponent(userInfo.ID)}`;
         }
     }
 </script>

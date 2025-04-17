@@ -71,14 +71,8 @@
       <button type="submit">ログインする</button>
     </form>
   </div>
-
+  <script src="user_information.js"></script>
   <script>
-    // ユーザー情報リスト（ID: パスワード）
-    const users = {
-      "NE000001": { password: "Gkde4d", name: "まえやん"},
-      "NE000002": { password: "Kt2jes", name: "フフフ大魔王"},
-      "NE000000": { password: "aaaaaa", name: "たいちゃん"}
-    };
 
     document.getElementById("loginForm").addEventListener("submit", function(event) {
       event.preventDefault();
