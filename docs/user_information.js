@@ -3,7 +3,8 @@ const init_users = {
     "NE000001": {ID : "NE000001", password: "Gkde4d", name: "まえやん", one_interview: 0},
     "NE000002": {ID : "NE000002", password: "Kt2jes", name: "フフフ大魔王", one_interview: 1},
     "NE000003": {ID : "NE000003", password: "altnyu", name: "ふくいけん", one_interview: 1},
-    "NE000004": {ID : "NE000004", password: "Kt2jes", name: "フフフ大魔王の母", one_interview: 1}
+    "NE000004": {ID : "NE000004", password: "Kt2jes", name: "フフフ大魔王の母", one_interview: 1},
+    "NE000005": {ID : "NE000005", password: "3faga2", name: "ブルー先生", one_interview: 1}
   };
 
 
